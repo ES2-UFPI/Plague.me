@@ -1,0 +1,2 @@
+class GameMidium < ApplicationRecord
+end

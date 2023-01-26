@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @game_midium %>
+
+<div>
+  <%= link_to "Edit this game midium", edit_game_midium_path(@game_midium) %> |
+  <%= link_to "Back to game midia", game_midia_path %>
+
+  <%= button_to "Destroy this game midium", @game_midium, method: :delete %>
+</div>
