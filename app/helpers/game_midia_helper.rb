@@ -1,2 +1,0 @@
-module GameMidiaHelper
-end
