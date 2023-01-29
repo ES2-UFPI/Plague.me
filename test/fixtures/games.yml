@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_game: MyString
+  description_game: MyText
+  release: 2023-01-29
+  rate_game: 1.5
+  franchise: MyString
+
+two:
+  name_game: MyString
+  description_game: MyText
+  release: 2023-01-29
+  rate_game: 1.5
+  franchise: MyString

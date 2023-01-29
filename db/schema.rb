@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_28_205709) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_29_204524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,38 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_28_205709) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "game_genres", force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_game_genres_on_game_id"
+    t.index ["genre_id"], name: "index_game_genres_on_genre_id"
+  end
+
+  create_table "game_platforms", force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "platform_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_game_platforms_on_game_id"
+    t.index ["platform_id"], name: "index_game_platforms_on_platform_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "name_game"
+    t.text "description_game"
+    t.date "release"
+    t.float "rate_game"
+    t.string "franchise"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "publisher_id", null: false
+    t.bigint "developer_id", null: false
+    t.index ["developer_id"], name: "index_games_on_developer_id"
+    t.index ["publisher_id"], name: "index_games_on_publisher_id"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name_genre"
     t.string "description_genre"
@@ -84,4 +116,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_28_205709) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "game_genres", "games"
+  add_foreign_key "game_genres", "genres"
+  add_foreign_key "game_platforms", "games"
+  add_foreign_key "game_platforms", "platforms"
+  add_foreign_key "games", "developers"
+  add_foreign_key "games", "publishers"
 end
