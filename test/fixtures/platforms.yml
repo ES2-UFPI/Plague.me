@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_platform: MyString
+  description_platform: MyString
+
+two:
+  name_platform: MyString
+  description_platform: MyString
