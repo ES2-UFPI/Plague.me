@@ -10,6 +10,26 @@
   </p>
 
   <p>
+    <strong>Publisher:</strong>
+    <%= @game.publisher.name %>
+  </p>
+
+  <p>
+    <strong>Developer:</strong>
+    <%= @game.developer.name %>
+  </p>
+
+  <p>
+    <strong>Genres:</strong>
+    <%= @game.genres.map(&:name).join(", ") %>
+  </p>
+
+  <p>
+    <strong>Platforms:</strong>
+    <%= @game.platforms.map(&:name).join(", ") %>
+  </p>
+
+  <p>
     <strong>Release:</strong>
     <%= game.release %>
   </p>

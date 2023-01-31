@@ -6,6 +6,10 @@
   <div class="form-inputs">
     <%= f.input :name_game %>
     <%= f.input :description_game %>
+    <%= f.input :publisher_id, collection: @publishers, as: :select, label: "Publisher" %>
+    <%= f.input :developer_id, collection: @developers, as: :select, label: "Developer" %>
+    <%= f.input :genre_ids, collection: @genres, as: :select, label: "Genres", multiple: true %>
+    <%= f.input :platform_ids, collection: @platforms, as: :select, label: "Platforms", multiple: true %>
     <%= f.input :release %>
     <%= f.input :rate_game %>
     <%= f.input :franchise %>
