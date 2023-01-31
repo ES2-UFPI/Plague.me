@@ -11,22 +11,22 @@
 
   <p>
     <strong>Publisher:</strong>
-    <%= @game.publisher.name %>
+    <%= @publisher.name %>
   </p>
 
   <p>
     <strong>Developer:</strong>
-    <%= @game.developer.name %>
+    <%= @developer.name %>
   </p>
 
   <p>
     <strong>Genres:</strong>
-    <%= @game.genres.map(&:name).join(", ") %>
+    <%= @genres.map(&:name).join(", ") %>
   </p>
 
   <p>
     <strong>Platforms:</strong>
-    <%= @game.platforms.map(&:name).join(", ") %>
+    <%= @platforms.map(&:name).join(", ") %>
   </p>
 
   <p>
