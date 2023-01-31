@@ -8,11 +8,14 @@ class GamesController < ApplicationController
 
   # GET /games/1 or /games/1.json
   def show
+    @games = Game.find(params[:id])
   end
 
   # GET /games/new
   def new
     @game = Game.new
+    @game.genres.build
+    @game.platforms.build
   end
 
   # GET /games/1/edit
@@ -65,6 +68,6 @@ class GamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:name_game, :description_game, :release, :rate_game, :franchise)
+      params.require(:game).permit(:name_game, :description_game, :release, :rate_game, :franchise,:publisher_id, :developer_id, genre_ids: [], platform_ids: [])
     end
 end
