@@ -6,6 +6,15 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
+  def filtered_search
+    @genres = Genre.all
+    @games = if params[:genre_id].present?
+      Genre.find(params[:genre_id]).games
+    else
+      Game.all
+    end
+  end
+
   # GET /games/1 or /games/1.json
   def show
     @games = Game.find(params[:id])

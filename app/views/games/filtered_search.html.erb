@@ -1,0 +1,11 @@
+<h1>Filtered Games</h1>
+
+<%= form_tag filtered_search_games_path, method: :get do %>
+  <%= label_tag :genre_id, "Filter by genre:" %>
+  <%= select_tag :genre_id, options_from_collection_for_select(@genres, :id, :name_genre) %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
+<% @games.each do |game| %>
+  <p><%= game.name_game %></p>
+<% end %>
