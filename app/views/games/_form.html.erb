@@ -6,10 +6,6 @@
   <div class="form-inputs">
     <%= f.input :name_game %>
     <%= f.input :description_game %>
-    <%= f.association :publisher, as: :select, collection: @publishers %>
-    <%= f.association :genres, as: :check_boxes, collection: @genres %>
-    <%= f.association :genres, as: :check_boxes, collection: @platforms %>
-    <%= f.association :developer, as: :select, collection: @developers %>
     <%= f.input :release %>
     <%= f.input :rate_game %>
     <%= f.input :franchise %>

@@ -4,10 +4,6 @@ class GamesController < ApplicationController
   # GET /games or /games.json
   def index
     @games = Game.all
-    @game.publisher = Publisher.find(params[:game][:publisher_id])
-    @game.developer = Developer.find(params[:game][:developer_id])
-    @game.genres = Genre.where(id: params[:game][:genre_ids])
-    @game.platforms = Platform.where(id: params[:game][:platform_ids])
   end
 
   # GET /games/1 or /games/1.json
@@ -26,10 +22,6 @@ class GamesController < ApplicationController
   # POST /games or /games.json
   def create
     @game = Game.new(game_params)
-    @game.publisher = Publisher.find(params[:game][:publisher_id])
-    @game.developer = Developer.find(params[:game][:developer_id])
-    @game.genres = Genre.where(id: params[:game][:genre_ids])
-    @game.platforms = Platform.where(id: params[:game][:platform_ids])
     respond_to do |format|
       if @game.save
         format.html { redirect_to game_url(@game), notice: "Game was successfully created." }
@@ -43,10 +35,6 @@ class GamesController < ApplicationController
 
   # PATCH/PUT /games/1 or /games/1.json
   def update
-    @game.publisher = Publisher.find(params[:game][:publisher_id])
-    @game.developer = Developer.find(params[:game][:developer_id])
-    @game.genres = Genre.where(id: params[:game][:genre_ids])
-    @game.platforms = Platform.where(id: params[:game][:platform_ids])
     respond_to do |format|
       if @game.update(game_params)
         format.html { redirect_to game_url(@game), notice: "Game was successfully updated." }
