@@ -11,4 +11,11 @@
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
+
+  <%= form_tag games_path, method: :get do %>
+    <%= label_tag :genre_id, "Filter by Genre:" %>
+    <%= select_tag :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: true %>
+    <%= submit_tag "Filter", name: nil %>
+  <% end %>
+  
 <% end %>

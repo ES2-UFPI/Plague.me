@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_29_204524) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_31_114506) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,11 +95,39 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_29_204524) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "promotion_games", force: :cascade do |t|
+    t.bigint "promotion_id", null: false
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_promotion_games_on_game_id"
+    t.index ["promotion_id"], name: "index_promotion_games_on_promotion_id"
+  end
+
+  create_table "promotions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "publishers", force: :cascade do |t|
     t.string "name_publisher"
     t.string "description_publisher"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_promotions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "promotion_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["promotion_id"], name: "index_user_promotions_on_promotion_id"
+    t.index ["user_id"], name: "index_user_promotions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -122,4 +150,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_29_204524) do
   add_foreign_key "game_platforms", "platforms"
   add_foreign_key "games", "developers"
   add_foreign_key "games", "publishers"
+  add_foreign_key "promotion_games", "games"
+  add_foreign_key "promotion_games", "promotions"
+  add_foreign_key "user_promotions", "promotions"
+  add_foreign_key "user_promotions", "users"
 end

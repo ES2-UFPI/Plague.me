@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'filtered_search/games', to: 'games#filtered_search', as: 'filtered_search_games'
+  resources :promotions
   resources :games
   root 'pages#home'
   resources :platforms
