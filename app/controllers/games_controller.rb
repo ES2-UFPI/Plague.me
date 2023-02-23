@@ -3,7 +3,11 @@ class GamesController < ApplicationController
 
   # GET /games or /games.json
   def index
-    @games = Game.all
+    if params[:query].present?
+      @games = Game.where("name_game ILIKE ?", "%#{params[:query]}%")
+    else
+      @games = Game.all
+    end
   end
 
   def filtered_search
