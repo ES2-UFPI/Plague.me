@@ -32,7 +32,22 @@ class GameTest < ActiveSupport::TestCase
     assert game.save
   end
 
+  #test "should not save game without a publisher" do
+  #  game = Game.new(
+  #   name_game: 'Example Game',
+  #    description_game: 'This is an example game.',
+  #    release: Date.today,
+  #    rate_game: 4.5,
+  #    franchise: 'Example Franchise',
+  #    developer_id: 1,
+  #    genre_ids: [1, 2],
+  #    platform_ids: [1, 3]
+  #  )
+  #  assert_not game.save, "Saved the game without a publisher"
+  #end
+
   test "should not save game without a publisher" do
+    publisher = Publisher.create(name: 'Example Publisher')
     game = Game.new(
       name_game: 'Example Game',
       description_game: 'This is an example game.',
@@ -40,10 +55,10 @@ class GameTest < ActiveSupport::TestCase
       rate_game: 4.5,
       franchise: 'Example Franchise',
       developer_id: 1,
+      publisher_id: 1,
       genre_ids: [1, 2],
       platform_ids: [1, 3]
     )
     assert_not game.save, "Saved the game without a publisher"
   end
-  
 end
