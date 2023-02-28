@@ -7,7 +7,7 @@
     <%= f.input :name_game %>
     <%= f.input :description_game %>
     <%= f.input :release %>
-    <%= f.input :rate_game %>
+    <%= f.input :rate_game, input_html: { value: @average_rating } %>
     <%= f.input :franchise %>
     <%= f.label :genres %>
     <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name_genre %>
