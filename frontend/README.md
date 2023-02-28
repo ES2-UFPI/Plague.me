@@ -1,12 +1,15 @@
 # [TO-DO]
 Sprint 2: O que falta
 
-## Página inicial (atual)
-- [] Terminar estrutura HTML: imagens, gradientes
-- [] Terminar estrutura CSS: cores e fontes corretas para a página
+## Página inicial - Ok
+- [x] Terminar estrutura HTML: imagens, gradientes
+- [x] Terminar estrutura CSS: cores e fontes corretas para a página
+- [] Passar para formato ERB
 
-## Página de jogos
-- [] Front-end
+## Página de jogos (atual)
+- [] Terminar estrutura HTML: imagens
+- [] Terminar estrutura CSS: cores corretas, ajustar problemas com seção de avaliação
+- [] Passar para formato ERB
 
 ## Página de busca
 - [] Front-end
