@@ -42,14 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_122504) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text "content"
-    t.bigint "game_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_comments_on_game_id"
-  end
-
   create_table "developers", force: :cascade do |t|
     t.string "name_developer"
     t.string "description_developer"
@@ -169,7 +161,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_122504) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "games"
   add_foreign_key "game_genres", "games"
   add_foreign_key "game_genres", "genres"
   add_foreign_key "game_platforms", "games"

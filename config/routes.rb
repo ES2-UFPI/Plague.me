@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :genres
   devise_for :users
   Rails.application.routes.draw do
+  resources :reviews
   resources :games do
       post 'create_review', on: :member
     end
