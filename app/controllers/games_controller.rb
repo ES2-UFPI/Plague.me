@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[favorite]
 
   # GET /games or /games.json
   def index
@@ -72,6 +73,18 @@ class GamesController < ApplicationController
       format.html { redirect_to games_url, notice: "Game was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def favorite
+    @game = Game.find(params[:id])
+    if current_user.favorite_games.include?(@game)
+      current_user.favorite_games.delete(@game)
+      flash[:notice] = "Game removed from favorites."
+    else
+      current_user.favorite_games << @game
+      flash[:notice] = "Game added to favorites."
+    end
+    redirect_to @game
   end
 
   private

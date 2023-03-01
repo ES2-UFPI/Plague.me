@@ -24,6 +24,15 @@
 </form>
 
 <div>
+
+<% if user_signed_in? %>
+  <% if current_user.favorite_games.include?(@game) %>
+    <%= button_to 'Remover dos favoritos', favorite_game_path(@game), method: :post, class: 'btn btn-outline-danger' %>
+  <% else %>
+    <%= button_to 'Adicionar aos favoritos', favorite_game_path(@game), method: :post, class: 'btn btn-outline-success' %>
+  <% end %>
+<% end %>
+
   <%= link_to "Edit this game", edit_game_path(@game) %> |
   <%= link_to "Back to games", games_path %>
 

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :users
   resources :reviews
   resources :games do
+    member do
+      post 'favorite'
+    end
       post 'create_review', on: :member
     end
 
