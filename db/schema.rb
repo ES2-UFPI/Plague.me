@@ -131,6 +131,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_122504) do
     t.index ["game_id"], name: "index_reviews_on_game_id"
   end
 
+  create_table "shops", force: :cascade do |t|
+    t.integer "idshops"
+    t.string "title_shop"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_promotions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "promotion_id", null: false
