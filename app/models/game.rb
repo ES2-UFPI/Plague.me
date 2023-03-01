@@ -1,4 +1,7 @@
 class Game < ApplicationRecord
+    validates :name_game, :description_game, presence: true
+    validates :rate_game, numericality: { greater_than_or_equal_to: 0.0, less_than_or_equal_to: 10.0 }
+
     belongs_to :publisher
     has_and_belongs_to_many :genres, join_table: :game_genres
     accepts_nested_attributes_for :genres
