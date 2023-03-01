@@ -10,17 +10,19 @@
         <%= link_to 'Home', root_path, class:"nav-link active" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <%= link_to 'Sign in', new_user_session_path, class:"nav-link" %>
       </li>
+      <% if user_signed_in? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          <%= current_user.nickname %>
         </a>
+      <% end %>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+          <%= link_to 'Profile', user_path(current_user.id), class: 'dropdown-item' %>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <%= link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item' %>
         </div>
       </li>
       <li class="nav-item">

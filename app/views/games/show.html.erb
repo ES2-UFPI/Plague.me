@@ -5,12 +5,16 @@
 <h2>Reviews:</h2>
 
 <% @game.reviews.each do |review| %>
-  <p><%= review.content %> - Nota: <%= review.score %> - Postado em <%= review.posted_at.strftime('%d/%m/%Y %H:%M:%S') %></p>
+  <p><%= review.user.nickname %>:</p>
+  <p><%= review.content %> - Nota: <%= review.score %> - Postado em <%= review.posted_at.strftime('%d/%m/%Y %H:%M:%S') %>
+  <% if review.user == current_user %>
+  <%= button_to 'Excluir', review_path(review), method: :delete %></p>
+<% end %>
 <% end %>
 
 <h2>Deixe sua review:</h2>
 
-<form action="<%= create_review_game_path(@game) %>" method="post">
+<form action="<%= reviews_path(@game) %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="game_id" value="<%= @game.id %>">
   <textarea name="review[content]"></textarea>

@@ -10,19 +10,6 @@ class GamesController < ApplicationController
     end
   end
 
-  def create_review
-    @game = Game.find(params[:game_id])
-    @review = @game.reviews.new(review_params)
-    @review.posted_at = Time.now 
-
-    if @review.save
-      @game.update_attribute(:rate_game, @game.calculate_average_rating)
-      redirect_to game_path(@game), notice: "Review enviada com sucesso!"
-    else
-      redirect_to game_path(@game), alert: "Não foi possível enviar a review."
-    end
-  end
-
   def filtered_search
     @genres = Genre.all
     @games = if params[:genre_id].present?
@@ -96,10 +83,6 @@ class GamesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def game_params
       params.require(:game).permit(:name_game, :description_game, :release, :rate_game, :franchise, :publisher_id, :developer_id, genre_ids: [], platform_ids: [])
-    end
-
-    def review_params
-      params.require(:review).permit(:content, :score)
     end
 
 end

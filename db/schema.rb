@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_122504) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_01_200310) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,14 +40,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_122504) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.text "content"
-    t.bigint "game_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_comments_on_game_id"
   end
 
   create_table "developers", force: :cascade do |t|
@@ -136,7 +128,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_122504) do
     t.datetime "updated_at", null: false
     t.datetime "posted_at"
     t.float "score"
+    t.bigint "user_id", null: false
     t.index ["game_id"], name: "index_reviews_on_game_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -163,13 +157,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_122504) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nickname"
+    t.text "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "games"
   add_foreign_key "game_genres", "games"
   add_foreign_key "game_genres", "genres"
   add_foreign_key "game_platforms", "games"
@@ -179,6 +174,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_122504) do
   add_foreign_key "promotion_games", "games"
   add_foreign_key "promotion_games", "promotions"
   add_foreign_key "reviews", "games"
+  add_foreign_key "reviews", "users"
   add_foreign_key "user_promotions", "promotions"
   add_foreign_key "user_promotions", "users"
 end
