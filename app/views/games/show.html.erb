@@ -5,10 +5,10 @@
 <h2>Reviews:</h2>
 
 <% @game.reviews.each do |review| %>
-  <p><%= review.user.email %>:</p>
+  <p><%= review.user.nickname %>:</p>
   <p><%= review.content %> - Nota: <%= review.score %> - Postado em <%= review.posted_at.strftime('%d/%m/%Y %H:%M:%S') %>
   <% if review.user == current_user %>
-  <%= button_to 'Excluir', review_path(review), method: :delete, data: { confirm: 'Tem certeza?' } %></p>
+  <%= button_to 'Excluir', review_path(review), method: :delete %></p>
 <% end %>
 <% end %>
 
