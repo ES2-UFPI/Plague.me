@@ -37,7 +37,7 @@
   <p>
     <strong>Genres:</strong>
     <% game.genres.each do |genre| %>
-      <%= genre.name_genre %>
+      <%= link_to genre.name_genre, filtered_search_games_path(genre_id: genre.id) %>
     <% end %>
   </p>
 

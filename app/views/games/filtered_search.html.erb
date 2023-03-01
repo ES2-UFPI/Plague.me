@@ -7,5 +7,5 @@
 <% end %>
 
 <% @games.each do |game| %>
-  <p><%= game.name_game %></p>
+  <p><%= link_to game.name_game, game_path(game) %></p>
 <% end %>

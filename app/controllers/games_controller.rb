@@ -3,7 +3,24 @@ class GamesController < ApplicationController
 
   # GET /games or /games.json
   def index
-    @games = Game.all
+    if params[:query].present?
+      @games = Game.where("name_game ILIKE ?", "%#{params[:query]}%")
+    else
+      @games = Game.all
+    end
+  end
+
+  def create_review
+    @game = Game.find(params[:game_id])
+    @review = @game.reviews.new(review_params)
+    @review.posted_at = Time.now 
+
+    if @review.save
+      @game.update_attribute(:rate_game, @game.calculate_average_rating)
+      redirect_to game_path(@game), notice: "Review enviada com sucesso!"
+    else
+      redirect_to game_path(@game), alert: "Não foi possível enviar a review."
+    end
   end
 
   def filtered_search
@@ -18,6 +35,7 @@ class GamesController < ApplicationController
   # GET /games/1 or /games/1.json
   def show
     @games = Game.find(params[:id])
+    @average_rating = @game.rate_game
   end
 
   # GET /games/new
@@ -79,4 +97,9 @@ class GamesController < ApplicationController
     def game_params
       params.require(:game).permit(:name_game, :description_game, :release, :rate_game, :franchise, :publisher_id, :developer_id, genre_ids: [], platform_ids: [])
     end
+
+    def review_params
+      params.require(:review).permit(:content, :score)
+    end
+
 end
