@@ -8,4 +8,6 @@
   <% end %>
 </ul>
 
-<%= link_to 'Editar perfil', edit_user_registration_path, class: 'btn btn-primary' %>
+<% if user_signed_in? && current_user == @user %>
+    <%= link_to 'Editar perfil', edit_user_registration_path, class: 'btn btn-primary' %>
+<% end %>
