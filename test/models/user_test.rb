@@ -5,7 +5,7 @@ class UserTest < ActiveSupport::TestCase
   #Teste para cadastro de user com todos os atributos
   test "should save user with all attributes" do
     user = User.new(
-      nickname: "User1", 
+      nickname: "User", 
       description: "Description user"
     )
     assert user.save, "Could not save the user with all atributes"
