@@ -11,6 +11,8 @@ class Game < ApplicationRecord
     accepts_nested_attributes_for :platforms
     belongs_to :developer
     has_many :reviews, dependent: :destroy
+    has_many :favorites, dependent: :destroy
+    has_many :favorited_by, through: :favorites, source: :user
 
     def calculate_average_rating
         reviews.average(:score).to_f.round(1)

@@ -1,4 +1,11 @@
 <h1>Perfil de <%= @user.nickname %></h1>
 <p><%= current_user.description %></p>
 
+<h3>Favoritos</h3>
+<ul>
+  <% @user.favorite_games.each do |game| %>
+    <li><%= link_to game.name_game, game %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Editar perfil', edit_user_registration_path, class: 'btn btn-primary' %>

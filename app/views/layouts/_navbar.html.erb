@@ -19,10 +19,12 @@
         </a>
       <% end %>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+          <% if user_signed_in? %>
           <%= link_to 'Profile', user_path(current_user.id), class: 'dropdown-item' %>
-          <div class="dropdown-divider"></div>
           <%= link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item' %>
+          <% end %>
+          <div class="dropdown-divider"></div>
+          <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class:"dropdown-item" %>
         </div>
       </li>
       <li class="nav-item">
