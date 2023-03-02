@@ -1,5 +1,8 @@
+require 'byebug'
+
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[favorite]
 
   # GET /games or /games.json
   def index
@@ -7,19 +10,6 @@ class GamesController < ApplicationController
       @games = Game.where("name_game ILIKE ?", "%#{params[:query]}%")
     else
       @games = Game.all
-    end
-  end
-
-  def create_review
-    @game = Game.find(params[:game_id])
-    @review = @game.reviews.new(review_params)
-    @review.posted_at = Time.now 
-
-    if @review.save
-      @game.update_attribute(:rate_game, @game.calculate_average_rating)
-      redirect_to game_path(@game), notice: "Review enviada com sucesso!"
-    else
-      redirect_to game_path(@game), alert: "Não foi possível enviar a review."
     end
   end
 
@@ -87,6 +77,31 @@ class GamesController < ApplicationController
     end
   end
 
+  def favorite
+    @game = Game.find(params[:id])
+    if current_user.favorite_games.include?(@game)
+      current_user.favorite_games.delete(@game)
+      flash[:notice] = "Game removed from favorites."
+    else
+      current_user.favorite_games << @game
+      flash[:notice] = "Game added to favorites."
+    end
+    redirect_to @game
+  end
+
+  def add_to_collection
+    @game = Game.find(params[:id])
+    @collection = Collection.find_by(user_id: current_user.id)
+    if @collection.games.include?(@game)
+      @collection.games.delete(@game)
+    else
+      @collection.games << @game
+      @collection.save!
+      byebug
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game
@@ -95,11 +110,7 @@ class GamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:name_game, :description_game, :release, :rate_game, :franchise,:publisher_id, :developer_id, genre_ids: [], platform_ids: [])
-    end
-
-    def review_params
-      params.require(:review).permit(:content, :score)
+      params.require(:game).permit(:name_game, :description_game, :release, :rate_game, :franchise, :publisher_id, :developer_id, genre_ids: [], platform_ids: [])
     end
 
 end

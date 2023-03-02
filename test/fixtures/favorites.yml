@@ -2,8 +2,8 @@
 
 one:
   user: one
-  promotion: one
+  game: one
 
 two:
   user: two
-  promotion: two
+  game: two

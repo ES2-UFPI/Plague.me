@@ -1,0 +1,8 @@
+<h1><%= @collection.title %></h1>
+
+<h3>Games:</h3>
+<ul>
+  <% @collection.games.each do |game| %>
+    <li><%= link_to game.name_game, game_path(game) %></li>
+  <% end %>
+</ul>

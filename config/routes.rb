@@ -9,11 +9,17 @@ Rails.application.routes.draw do
   resources :publishers
   resources :genres
   devise_for :users
-  Rails.application.routes.draw do
+  resources :users
+  resources :reviews
+  resources :collections
   resources :games do
+    member do
+      post 'favorite'
+      post :add_to_collection
+    end
       post 'create_review', on: :member
     end
-  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
