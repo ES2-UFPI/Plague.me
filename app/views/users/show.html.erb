@@ -9,5 +9,18 @@
 </ul>
 
 <% if user_signed_in? && current_user == @user %>
+  <h2>Suas coleções</h2>
+  <% if @user.collections.any? %>
+    <ul>
+      <% @user.collections.each do |collection| %>
+        <li><%= link_to collection.title, collection_path(collection) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Você ainda não possui uma coleção. <%= link_to "Criar", new_collection_path %></p>
+  <% end %>
+<% end %>
+
+<% if user_signed_in? && current_user == @user %>
     <%= link_to 'Editar perfil', edit_user_registration_path, class: 'btn btn-primary' %>
 <% end %>

@@ -1,3 +1,5 @@
+require 'byebug'
+
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[favorite]
@@ -85,6 +87,19 @@ class GamesController < ApplicationController
       flash[:notice] = "Game added to favorites."
     end
     redirect_to @game
+  end
+
+  def add_to_collection
+    @game = Game.find(params[:id])
+    @collection = Collection.find_by(user_id: current_user.id)
+    if @collection.games.include?(@game)
+      @collection.games.delete(@game)
+    else
+      @collection.games << @game
+      @collection.save!
+      byebug
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   private

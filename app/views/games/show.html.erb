@@ -25,6 +25,8 @@
 
 <div>
 
+<br>
+
 <% if user_signed_in? %>
   <% if current_user.favorite_games.include?(@game) %>
     <%= button_to 'Remover dos favoritos', favorite_game_path(@game), method: :post, class: 'btn btn-outline-danger' %>
@@ -32,6 +34,13 @@
     <%= button_to 'Adicionar aos favoritos', favorite_game_path(@game), method: :post, class: 'btn btn-outline-success' %>
   <% end %>
 <% end %>
+
+  <br>
+
+  <%= form_tag(add_to_collection_game_path(@game), method: :post) do %>
+    <%= collection_select :collection_item, :collection_id, current_user.collections, :id, :title, { prompt: 'Selecione uma coleção' } %>
+    <%= submit_tag 'Adicionar à coleção' %>
+  <% end %>
 
   <%= link_to "Edit this game", edit_game_path(@game) %> |
   <%= link_to "Back to games", games_path %>
