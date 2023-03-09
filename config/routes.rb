@@ -11,14 +11,14 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :reviews
-  resources :collections
+  resources :collections 
   resources :games do
     member do
       post 'favorite'
       post :add_to_collection
     end
       post 'create_review', on: :member
-    end
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -8,8 +8,13 @@
   <% end %>
 </ul>
 
-<% if user_signed_in? && current_user == @user %>
-  <h2>Suas coleções</h2>
+
+<h3>Coleções</h3>
+  <% if user_signed_in? && current_user == @user %>
+    <% if @user.collections.any? %>
+      <%= link_to "- Criar Nova", new_collection_path %> </h3>
+    <% end %> 
+  <% end %>
   <% if @user.collections.any? %>
     <ul>
       <% @user.collections.each do |collection| %>
@@ -19,7 +24,6 @@
   <% else %>
     <p>Você ainda não possui uma coleção. <%= link_to "Criar", new_collection_path %></p>
   <% end %>
-<% end %>
 
 <% if user_signed_in? && current_user == @user %>
     <%= link_to 'Editar perfil', edit_user_registration_path, class: 'btn btn-primary' %>

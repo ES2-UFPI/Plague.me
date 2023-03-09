@@ -97,7 +97,6 @@ class GamesController < ApplicationController
     else
       @collection.games << @game
       @collection.save!
-      byebug
     end
     redirect_back(fallback_location: root_path)
   end
