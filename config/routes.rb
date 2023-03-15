@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   resources :publishers
   resources :genres
   devise_for :users
-  resources :users
+  resources :users do
+    member do
+      post 'add_friend'
+      get 'friends'
+    end
+  end
   resources :reviews
   resources :collections 
   resources :games do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_02_003205) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_15_201126) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,6 +73,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_003205) do
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_favorites_on_game_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "friendship_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "friend_id", null: false
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friendship_requests_on_friend_id"
+    t.index ["user_id"], name: "index_friendship_requests_on_user_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "friend_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
   create_table "game_genres", force: :cascade do |t|
@@ -196,6 +216,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_003205) do
   add_foreign_key "collections", "users"
   add_foreign_key "favorites", "games"
   add_foreign_key "favorites", "users"
+  add_foreign_key "friendship_requests", "users"
+  add_foreign_key "friendship_requests", "users", column: "friend_id"
+  add_foreign_key "friendships", "users"
+  add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "game_genres", "games"
   add_foreign_key "game_genres", "genres"
   add_foreign_key "game_platforms", "games"

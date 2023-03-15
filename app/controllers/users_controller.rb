@@ -13,6 +13,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def add_friend
+    @user = User.find(params[:id])
+    current_user.friends << @user
+    redirect_to @user, notice: 'Friend request sent!'
+  end
+
+  def friends
+    @user = User.find(params[:id])
+    @friends = @user.friends
+  end
+
   private
 
   def user_params
