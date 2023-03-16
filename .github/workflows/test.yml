@@ -15,7 +15,8 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
         with:
-          ruby-version: '3.2'
+          ruby-version: head
+          bundler-cache: true
       - name: Install dependencies
         run: |
          gem install bundler
