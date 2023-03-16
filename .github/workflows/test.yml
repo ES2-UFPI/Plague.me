@@ -17,8 +17,6 @@ jobs:
         with:
           ruby-version: head
       - name: Install dependencies
-        run: |
-         gem install bundler
-         bundle install --jobs 4 --retry 3
+        run: bundle install
       - name: Run tests
         run: bundle exec rails test
