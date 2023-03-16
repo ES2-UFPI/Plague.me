@@ -1,4 +1,4 @@
-name: Ruby
+name: Continous Integration Ruby
 
 on:
   push:
@@ -7,17 +7,19 @@ on:
     branches: [ Alexandre#30 ]
 
 jobs:
-  test:
+  build:
 
-    runs-on: ubuntu 22.04.2
+    runs-on: ubuntu-22.04
 
     steps:
+      - name: Checkout code
       - uses: actions/checkout@v3
       - name: Set up Ruby
-        uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
-        with:
+        uses: ruby/setup-ruby@v1
           ruby-version: '3.2'
       - name: Install dependencies
-        run: bundle install
+        run: |
+         gem install bundler
+         bundle install --jobs 4 --retry 3
       - name: Run tests
-        run: bundle exec rake
+        run: bundle exec rails test
