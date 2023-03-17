@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   end
   resources :friendships, only: [:create, :destroy]
   resources :reviews
-  resources :collections 
+  resources :collections do
+    delete 'games/:id', to: 'collections#remove_game', as: :remove_game
+  end 
   resources :games do
     member do
       post 'favorite'
