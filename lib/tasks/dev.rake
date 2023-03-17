@@ -29,7 +29,7 @@ namespace :dev do
         puts("Jogos cadastrados!") 
 
         %x(rails dev:add_default_user) 
-        puts("Usuário padrão cadastrado!")
+        puts("Usuários padrão cadastrados!")
          
       else
         puts "Not on development env"
@@ -199,7 +199,7 @@ namespace :dev do
         end
     end
 
-    desc "Cadastra publishers"
+    desc "Cadastra usuários"
     task add_default_user: :environment do  
 
         User.create!(
@@ -207,6 +207,13 @@ namespace :dev do
           password: 123456,
           password_confirmation: 123456,
           nickname: 'defuser'
+        )
+
+        User.create!(
+          email: 'test@test.com',
+          password: 123456,
+          password_confirmation: 123456,
+          nickname: 'usertest'
         )
         
     end

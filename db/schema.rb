@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_15_201126) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_16_131309) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,14 +75,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_201126) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "friendship_requests", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "friend_id", null: false
-    t.string "status", default: "pending"
+  create_table "friend_requests", force: :cascade do |t|
+    t.bigint "requester_id", null: false
+    t.bigint "receiver_id", null: false
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["friend_id"], name: "index_friendship_requests_on_friend_id"
-    t.index ["user_id"], name: "index_friendship_requests_on_user_id"
+    t.index ["receiver_id"], name: "index_friend_requests_on_receiver_id"
+    t.index ["requester_id"], name: "index_friend_requests_on_requester_id"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -216,8 +216,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_201126) do
   add_foreign_key "collections", "users"
   add_foreign_key "favorites", "games"
   add_foreign_key "favorites", "users"
-  add_foreign_key "friendship_requests", "users"
-  add_foreign_key "friendship_requests", "users", column: "friend_id"
+  add_foreign_key "friend_requests", "users", column: "receiver_id"
+  add_foreign_key "friend_requests", "users", column: "requester_id"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "game_genres", "games"

@@ -10,11 +10,16 @@ Rails.application.routes.draw do
   resources :genres
   devise_for :users
   resources :users do
+    resources :friend_requests, only: [:create, :destroy, :show] do
+      member do
+        put :accept
+      end
+    end
     member do
-      post 'add_friend'
       get 'friends'
     end
   end
+  resources :friendships, only: [:create, :destroy]
   resources :reviews
   resources :collections 
   resources :games do

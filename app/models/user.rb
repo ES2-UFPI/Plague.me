@@ -13,6 +13,13 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
-  has_many :inverse_friends, through: :inverse_friendships, source: :user       
+  has_many :inverse_friends, through: :inverse_friendships, source: :user    
+  
+  has_many :sent_friend_requests, class_name: 'FriendRequest', foreign_key: 'requester_id', dependent: :destroy
+  has_many :received_friend_requests, class_name: 'FriendRequest', foreign_key: 'receiver_id', dependent: :destroy
+
+  def friendship_with(other_user)
+    Friendship.find_by(user: self, friend: other_user) || Friendship.find_by(user: other_user, friend: self)
+  end
 
 end
