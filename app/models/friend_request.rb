@@ -9,12 +9,16 @@ class FriendRequest < ApplicationRecord
   scope :accepted, -> { where(status: 'accepted') }
   
   def accept
-    update(status: true)
-    receiver.friends << requester
-    requester.friends << receiver
-    requester.sent_friend_requests.destroy(self)
-    receiver.received_friend_requests.destroy(self)
-    destroy
+    if receiver.friends.include?(requester)
+      requester.sent_friend_requests.destroy(self)
+      destroy
+    else
+      update(status: true)
+      receiver.friends << requester
+      requester.friends << receiver
+      requester.sent_friend_requests.destroy(self)
+      receiver.received_friend_requests.destroy(self)
+    end
   end
 
   def reject
