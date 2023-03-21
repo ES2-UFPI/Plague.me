@@ -92,11 +92,15 @@ class GamesController < ApplicationController
   def add_to_collection
     @game = Game.find(params[:id])
     @collection = current_user.collections.find(params[:collection_item][:collection_id])
-    @collection_item = CollectionItem.new(collection: @collection, game: @game)
-    if @collection_item.save
-      redirect_to @game, notice: 'Jogo adicionado à coleção.'
+    if @collection.collection_items.exists?(game_id: @game.id)
+      redirect_to @game, alert: 'Este jogo já está na coleção.'
     else
-      redirect_to @game, alert: 'Falha ao adicionar jogo à coleção.'
+      @collection_item = CollectionItem.new(collection: @collection, game: @game)
+      if @collection_item.save
+        redirect_to @game, notice: 'Jogo adicionado à coleção.'
+      else
+        redirect_to @game, alert: 'Falha ao adicionar jogo à coleção.'
+      end
     end
   end
 
