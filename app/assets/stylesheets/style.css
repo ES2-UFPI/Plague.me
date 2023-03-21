@@ -11840,3 +11840,7 @@ footer a:focus {
   -o-background-size: cover;
   background-size: cover;
 }
+
+.genshin-impact {
+  background-image: url(app/assets/images/Inazuma-Genshin-Impact.jpg);
+}
