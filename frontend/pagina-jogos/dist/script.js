@@ -1,7 +1,43 @@
-/*!
- * Start Bootstrap - Modern Business v5.0.6 (https://startbootstrap.com/template-overviews/modern-business)
- * Copyright 2013-2022 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-modern-business/blob/master/LICENSE)
- */
-// This file is intentionally blank
-// Use this file to add JavaScript to your project
+window.addEventListener("DOMContentLoaded", (event) => {
+    // Activate Bootstrap scrollspy on the main nav element
+    const mainNav = document.body.querySelector("#mainNav");
+    if (mainNav) {
+      new bootstrap.ScrollSpy(document.body, {
+        target: "#mainNav",
+        offset: 74
+      });
+    }
+    
+    $(document).ready(function(){
+    $('.slick-slider').slick({
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: true,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+  });
