@@ -36,5 +36,5 @@ jobs:
           DATABASE_URL : postgres://postgres:password@localhost:5432/plagueme_test
           RAILS_ENV : test
         run: |
-          bin/rails db:plagueme_test:prepare
-          bin/rails test
+          bundle exec rails db:prepare
+          bundle exec rails test
