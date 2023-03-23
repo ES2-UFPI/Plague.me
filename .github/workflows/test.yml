@@ -33,7 +33,7 @@ jobs:
         run: bundle install
       - name: Set up database and run tests
         env: 
-          DATABASE_URL : postgres://postgres:password@localhost:5432/test
+          DATABASE_URL : postgres://postgres:password@localhost:5432/plagueme_test
           RAILS_ENV : test
         run: |
           bundle exec rails db:create
