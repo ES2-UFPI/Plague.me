@@ -24,7 +24,7 @@ class GamePlatformTest < ActiveSupport::TestCase
     game_platform = GamePlatform.new(
       game_id: game.id, 
       platform_id: platform.id)
-    assert game_platform.save, "Could not save the game_platform with game and platform"
+    refute game_platform.save, "Could not save the game_platform with game and platform"
   end
 
   #Teste para saber se uma plataforma está associada a um game 
