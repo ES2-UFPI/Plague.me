@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :favorites, dependent: :destroy
   has_many :favorite_games, through: :favorites, source: :game
+  has_many :wishlists, dependent: :destroy
+  has_many :wishlist_games, through: :wishlists, source: :game
+  has_many :user_games, dependent: :destroy
+  has_many :games, through: :user_games
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     delete 'games/:id', to: 'collections#remove_game', as: :remove_game
   end 
   resources :games do
+    resources :user_games, only: [:create]
     member do
+      post 'wishlist'
       post 'favorite'
       post :add_to_collection
     end

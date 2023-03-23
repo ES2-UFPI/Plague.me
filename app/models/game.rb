@@ -15,6 +15,10 @@ class Game < ApplicationRecord
     has_many :favorited_by, through: :favorites, source: :user
     has_many :collection_items, dependent: :destroy
     has_many :collections, through: :collection_items
+    has_many :wishlists, dependent: :destroy
+    has_many :wishlisted_by, through: :wishlists, source: :user
+    has_many :user_games, dependent: :destroy
+    has_many :users, through: :user_games
 
     def calculate_average_rating
         reviews.average(:score).to_f.round(1)

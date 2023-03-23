@@ -1,8 +1,6 @@
-require 'byebug'
-
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[favorite]
+  before_action :authenticate_user!, only: %i[favorite wishlist]
 
   # GET /games or /games.json
   def index
@@ -85,6 +83,18 @@ class GamesController < ApplicationController
     else
       current_user.favorite_games << @game
       flash[:notice] = "Game added to favorites."
+    end
+    redirect_to @game
+  end
+
+  def wishlist
+    @game = Game.find(params[:id])
+    if current_user.wishlist_games.include?(@game)
+      current_user.wishlist_games.delete(@game)
+      flash[:notice] = "Game removed from wishlist."
+    else
+      current_user.wishlist_games << @game
+      flash[:notice] = "Game added to wishlist."
     end
     redirect_to @game
   end
