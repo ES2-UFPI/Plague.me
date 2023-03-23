@@ -16,8 +16,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
-        ports:
-          - ["5432:5432"]
+        ports: ["5432:5432"]
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -39,4 +38,4 @@ jobs:
         run: |
           bundle exec rails db:create
           bundle exec rails db:schema:load
-        run: bundle exec rails test
+          bundle exec rails test
