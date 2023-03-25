@@ -1,0 +1,22 @@
+<h1>Biblioteca de <%= @user.nickname %></h1>
+
+<h3>Jogados</h3>
+<% @played_games.each do |user_game| %>
+    <ul>
+       <li><%= link_to user_game.game.name_game, user_game.game %></li>
+    </ul>
+<% end %>
+
+<h3>Jogando atualmente</h3>
+<% @in_progress_games.each do |user_game| %>
+    <ul>
+       <li><%= link_to user_game.game.name_game, user_game.game %></li>
+    </ul>
+<% end %>
+
+<h3>Não finalizados</h3>
+<% @unfinished.each do |user_game| %>
+    <ul>
+       <li><%= link_to user_game.game.name_game, user_game.game %></li>
+    </ul>
+<% end %>

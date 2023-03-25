@@ -8,6 +8,8 @@
   <% end %>
 </ul>
 
+<h3><%= link_to "Biblioteca", user_library_path(@user), class: 'btn btn-primary' %></h3>
+
 <h3>Wishlist</h3>
 <ul>
   <% @user.wishlist_games.each do |game| %>
