@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'filtered_search/games', to: 'games#filtered_search', as: 'filtered_search_games'
+  get 'users/:user_id/library', to: 'user_games#index', as: :user_library
   resources :promotions
   resources :games
   root 'pages#home'

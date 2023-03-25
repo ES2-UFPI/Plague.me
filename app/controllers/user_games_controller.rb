@@ -1,4 +1,14 @@
 class UserGamesController < ApplicationController
+  before_action :authenticate_user!
+
+    def index
+      @user = User.find(params[:user_id])
+      @user_games = @user.user_games
+      @played_games = @user_games.played
+      @in_progress_games = @user_games.playing
+      @unfinished = @user_games.unfinished
+    end
+
     def create
       @game = Game.find(params[:game_id])
       @user_game = current_user.user_games.build(user_game_params)
