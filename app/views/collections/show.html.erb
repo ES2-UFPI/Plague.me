@@ -3,15 +3,22 @@
 <% if @collection.games.any? %>
   <ul>
     <% @collection.games.each do |game| %>
-      <li><%= link_to game.name_game, game_path(game) %></li>
+        <li>
+          <%= link_to game.name_game, game_path(game) %>
+          <% if current_user == @collection.user %>
+            <%= button_to 'Remover', collection_remove_game_path(@collection, game), method: :delete %>
+          <% end %>
+      </li>
     <% end %>
-<% else %>
+  <% elsif current_user == @collection.user %>
     <p>Você ainda não adicionou jogos à coleção.</p>
+  <% else %>
+    <p>Este usuário ainda não adicionou jogos à coleção.</p>
 <% end %>
 </ul>
 
 <% if @collection.user == current_user %>
-  <%= button_to 'Excluir Coleção', collection_path, method: :delete %></p>
+  <%= button_to 'Excluir Coleção', collection_path, method: :delete, class: 'btn btn-outline-danger' %></p>
 <% end %>
 
-<%= link_to "Back", user_path(current_user) %>
+<%= link_to "Back", user_path(@collection.user), class: 'btn btn-primary' %>

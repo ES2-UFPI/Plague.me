@@ -44,6 +44,13 @@ class CollectionsController < ApplicationController
             redirect_to user_path(@current_user), alert: "Você não tem permissão para excluir esta coleção."
           end
         end
+
+        def remove_game
+          @collection = Collection.find(params[:collection_id])
+          @game = Game.find(params[:id])
+          @collection.games.delete(@game)
+          redirect_to @collection, notice: 'Jogo removido da coleção com sucesso!'
+        end
       
         private
       

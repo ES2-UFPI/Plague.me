@@ -1,0 +1,29 @@
+<h1>Editando biblioteca de <%= @user.nickname %></h1>
+
+<%= form_tag user_game_path(@user.id), method: :put do %>
+  <%= hidden_field_tag :user_id, @user.id %>
+  <h3>Jogados</h3>
+  <% @played_games.each do |user_game| %>
+    <ul>
+      <li><%= user_game.game.name_game %></li>
+      <%= select_tag "user_game[#{user_game.id}][status]", options_for_select([['playing'], ['played'], ['unfinished']], user_game.status), prompt: 'Selecione o status' %>
+    </ul>
+  <% end %>
+
+  <h3>Jogando atualmente</h3>
+  <% @in_progress_games.each do |user_game| %>
+    <ul>
+      <li><%= user_game.game.name_game %></li>
+      <%= select_tag "user_game[#{user_game.id}][status]", options_for_select([['playing'], ['played'], ['unfinished']], user_game.status), prompt: 'Selecione o status' %>
+    </ul>
+  <% end %>
+
+  <h3>Não finalizados</h3>
+  <% @unfinished.each do |user_game| %>
+    <ul>
+      <li><%= user_game.game.name_game %></li>
+      <%= select_tag "user_game[#{user_game.id}][status]", options_for_select([['playing'], ['played'], ['unfinished']], user_game.status), prompt: 'Selecione o status' %>
+    </ul>
+  <% end %>
+  <%= submit_tag 'Salvar' %>
+<% end %>

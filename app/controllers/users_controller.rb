@@ -7,10 +7,15 @@ class UsersController < ApplicationController
   
   def update
     if current_user.update(user_params)
-      redirect_to user_path(current_user), notice: 'Description atualizada com sucesso.'
+      redirect_to user_path(current_user), notice: 'Descrição atualizada com sucesso.'
     else
       render :edit
     end
+  end
+
+  def friends
+    @user = User.find(params[:id])
+    @friends = @user.friends
   end
 
   private

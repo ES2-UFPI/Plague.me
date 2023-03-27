@@ -20,7 +20,9 @@ class ReviewsController < ApplicationController
     
     if @review.user_id == current_user.id
       @review.destroy
-      redirect_to game_path(@review.game_id), notice: "Review excluída com sucesso!"
+      game = @review.game
+      game.update(rate_game: game.calculate_average_rating)
+      redirect_to game_path(game), notice: "Review excluída com sucesso!"
     else
       redirect_to game_path(@review.game_id), alert: "Você não tem permissão para excluir esta review."
     end
