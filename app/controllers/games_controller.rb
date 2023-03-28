@@ -77,8 +77,7 @@ class GamesController < ApplicationController
 
   def favorite
     @game = Game.find(params[:id])
-    if current_user.favorite_games.include?(@game)
-      current_user.favorite_games.delete(@game)
+    if current_user.favorite_games.delete(@game)
       flash[:notice] = "Game removed from favorites."
     else
       current_user.favorite_games << @game
