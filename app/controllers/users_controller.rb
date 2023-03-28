@@ -13,6 +13,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def friends
+    @user = User.find(params[:id])
+    @friends = @user.friends
+  end
+
   private
 
   def user_params

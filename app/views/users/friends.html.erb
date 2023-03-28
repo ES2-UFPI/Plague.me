@@ -1,0 +1,6 @@
+<h1>Friends</h1>
+<% @friends.each do |friend| %>
+<ul>
+  <li><%= link_to friend.nickname, user_path(friend) %></li>
+</ul>
+<% end %>

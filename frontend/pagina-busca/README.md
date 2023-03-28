@@ -1,6 +1,11 @@
 # [TO-DO]
 Sprint 3: O que falta
 
+## Template (atual)
+- [] Navbar
+- [x] Container central
+- [x] Footer
+
 ## Página de jogos (atual) [#28](https://github.com/ES2-UFPI/Plague.me/issues/28) - dias 16-21
 - [] Terminar estrutura HTML:
     - [] Ajeitar header
