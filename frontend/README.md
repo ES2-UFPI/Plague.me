@@ -1,23 +1,8 @@
 # [TO-DO]
-Sprint 2: O que falta
+Sprint 3: O que falta
 
-## Página inicial - Ok
-- [x] Terminar estrutura HTML: imagens, gradientes
-- [x] Terminar estrutura CSS: cores e fontes corretas para a página
-- [] Passar para formato ERB
-
-## Página de jogos (atual)
-- [] Terminar estrutura HTML: imagens
-- [] Terminar estrutura CSS: cores corretas, ajustar problemas com seção de avaliação
-- [] Passar para formato ERB
-
-## Página de busca
-- [] Front-end
-
-## Página do usuário
-- [] Figma
-- [] Front-end
-
+## Página do usuário (atual) [#58](https://github.com/ES2-UFPI/Plague.me/issues/58) - dias 23-28
+- [] Faltou implementar o feed
 
 ## Observações:
 ### Cores

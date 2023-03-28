@@ -1,5 +1,5 @@
 <h1>Perfil de <%= @user.nickname %></h1>
-<p><%= current_user.description %></p>
+<p><%= @user.description %></p>
 
 <h3>Favoritos</h3>
 <ul>
@@ -8,19 +8,51 @@
   <% end %>
 </ul>
 
-<% if user_signed_in? && current_user == @user %>
-  <h2>Suas coleções</h2>
+<h3><%= link_to "Biblioteca", user_library_path(@user), class: 'btn btn-primary' %></h3>
+
+<h3>Wishlist</h3>
+<ul>
+  <% @user.wishlist_games.each do |game| %>
+    <li><%= link_to game.name_game, game %></li>
+  <% end %>
+</ul>
+
+<h3>Coleções </h3> 
+  <% if user_signed_in? && current_user == @user %>
+    <% if @user.collections.any? %>
+      <%= link_to "Criar Nova", new_collection_path, class: 'btn btn-outline-success' %> 
+    <% end %> 
+  <% end %>
   <% if @user.collections.any? %>
     <ul>
       <% @user.collections.each do |collection| %>
         <li><%= link_to collection.title, collection_path(collection) %></li>
       <% end %>
     </ul>
-  <% else %>
+  <% elsif current_user == @user %>
     <p>Você ainda não possui uma coleção. <%= link_to "Criar", new_collection_path %></p>
+  <% else %>
+    <p>Este usuário ainda não possui nenhuma coleção.</p>
   <% end %>
-<% end %>
 
 <% if user_signed_in? && current_user == @user %>
     <%= link_to 'Editar perfil', edit_user_registration_path, class: 'btn btn-primary' %>
 <% end %>
+
+<%= link_to "Amigos", friends_user_path(@user), class: 'btn btn-primary' %>
+
+<% if current_user == @user %>
+<%= link_to "Solicitações de amizade", user_friend_request_path(@user), class: 'btn btn-primary' %>
+<% end %>
+
+<% if current_user != @user %>
+  <% if current_user.friends.include?(@user) %>
+    <%= button_to "Desfazer amizade", friendship_path(current_user.friendship_with(@user)), method: :delete, class: 'btn btn-danger' %>
+  <% elsif current_user.sent_friend_requests.exists?(receiver: @user) %>
+    <%= link_to "Solicitação de amizade pendente", "#" %>
+  <% else %>
+    <%= button_to "Enviar solicitação de amizade", user_friend_requests_path(@user), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
+
