@@ -17,7 +17,7 @@ class FriendRequestsController < ApplicationController
     end
 
     def accept
-      @friend_request = FriendRequest.find_by(id: params[:id], receiver: current_user, status: 'pending')
+      @friend_request = current_user.received_friend_requests.pending.find_by(id: params[:id])  
       if @friend_request
         @friend_request.accept
         redirect_to current_user, notice: 'Solicitação de amizade aceita!'
