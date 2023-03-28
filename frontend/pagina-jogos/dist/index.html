@@ -2,326 +2,263 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Plague.me - Página de jogos</title>
+  <title>CodePen - Testando - página jogos</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<head>
+<!-- Header -->
+<header>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>Stardew Valley - Plague.me</title>
-  <!-- Favicon-->
+  <meta name="author" content="Plague.me" />
+  <title>Plague.me</title>
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-  <!-- Bootstrap icons-->
+
+  <!-- Imports-->
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Slick -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <!-- Bootstrap icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Google fonts-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="css/styles.css" rel="stylesheet" />
-</head>
+</header>
 
-<body class="d-flex flex-column h-100">
-  <main class="flex-shrink-0">
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container px-5">
-        <p><img src="https://dummyimage.com/100x100/343a40/6c757d.png" alt="Logo" width="100" height="100" longdesc="desc.txt" /></p>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="#">Entre</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Cadastre-se</a></li>
+<body id="page-top">
 
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- Header-->
-    <header class="bg-dark py-5">
-      <div class="container px-5">
-        <div class="row gx-5 align-items-center justify-content-center">
-          <div class="col-lg-8 col-xl-7 col-xxl-6">
-            <div class="my-5 text-center text-xl-start">
-              <h1 class="display-5 fw-bolder text-white mb-2">Stardew Valley</h1>
-              <p class="lead fw-normal text-white-50 mb-4">Stardew Valley é um jogo de videogame, dos gêneros RPG e simulação, desenvolvido por Eric Barone e publicado pela ConcernedApe e pela Chucklefish. O jogo foi lançado para Microsoft Windows em 26 de fevereiro de 2016. Versões para Mac OS X e Linux foram lançadas em 29 de julho de 2016.</p>
-              <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Ver promoções</a>
-                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Adicionar à Lista...</a>
-                <a class="btn btn-outline-light btn-lg px-4" href="#!">Avaliar</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
-        </div>
-      </div>
-    </header>
-    <!-- Features section-->
-    <section class="py-5" id="features">
-      <div class="container px-5 my-5">
-        <div class="row gx-5">
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h2 class="fw-bolder mb-0">Características do jogo</h2>
-          </div>
-          <div class="col-lg-8">
-            <div class="row gx-5 row-cols-1 row-cols-md-2">
-              <div class="col mb-5 h-100">
-                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                <h2 class="h5">Publisher</h2>
-                <p class="mb-0">ConcernedApe</p>
-              </div>
-              <div class="col mb-5 h-100">
-                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                <h2 class="h5">Gêneros</h2>
-                <p class="mb-0">RPG, Simuladores, Indie</p>
-              </div>
-              <div class="col mb-5 mb-md-0 h-100">
-                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                <h2 class="h5">Plataformas</h2>
-                <p class="mb-0">PC, Mac, PS4, Mobile, Xbox One, Switch</p>
-              </div>
-              <div class="col h-100">
-                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                <h2 class="h5">Indicações</h2>
-                <p class="mb-0">BAFTA Video Games, The Game Award</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Testimonial section-->
-    <div class="py-5 bg-light">
-      <div class="container px-5 my-5">
-        <div class="row gx-5 justify-content-center">
-          <div class="col-lg-10 col-xl-7">
-            <div class="container-fluid px-1 py-5 mx-auto">
-              <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
-                  <div class="card">
-                    <div class="row justify-content-left d-flex">
-                      <div class="col-md-4 d-flex flex-column">
-                        <div class="rating-box">
-                          <h1 class="pt-4">4.0</h1>
-                          <p class="">out of 5</p>
-                        </div>
-                        <div>
-                          <span class="fa fa-star star-active mx-1"></span>
-                          <span class="fa fa-star star-active mx-1"></span>
-                          <span class="fa fa-star star-active mx-1"></span>
-                          <span class="fa fa-star star-active mx-1"></span>
-                          <span class="fa fa-star star-inactive mx-1"></span>
-                        </div>
-                      </div>
-                      <div class="col-md-8">
-                        <div class="rating-bar0 justify-content-center">
-                          <table class="text-left mx-auto">
-                            <tr>
-                              <td class="rating-label">Excellent</td>
-                              <td class="rating-bar">
-                                <div class="bar-container">
-                                  <div class="bar-5"></div>
-                                </div>
-                              </td>
-                              <td class="text-right">123</td>
-                            </tr>
-                            <tr>
-                              <td class="rating-label">Good</td>
-                              <td class="rating-bar">
-                                <div class="bar-container">
-                                  <div class="bar-4"></div>
-                                </div>
-                              </td>
-                              <td class="text-right">23</td>
-                            </tr>
-                            <tr>
-                              <td class="rating-label">Average</td>
-                              <td class="rating-bar">
-                                <div class="bar-container">
-                                  <div class="bar-3"></div>
-                                </div>
-                              </td>
-                              <td class="text-right">10</td>
-                            </tr>
-                            <tr>
-                              <td class="rating-label">Poor</td>
-                              <td class="rating-bar">
-                                <div class="bar-container">
-                                  <div class="bar-2"></div>
-                                </div>
-                              </td>
-                              <td class="text-right">3</td>
-                            </tr>
-                            <tr>
-                              <td class="rating-label">Terrible</td>
-                              <td class="rating-bar">
-                                <div class="bar-container">
-                                  <div class="bar-1"></div>
-                                </div>
-                              </td>
-                              <td class="text-right">0</td>
-                            </tr>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="row d-flex">
-                      <div class="">
-                        <img class="profile-pic" src="https://i.pinimg.com/736x/72/8f/8c/728f8c1bdb02de58dfe28218b3ec2a2e.jpg">
-                      </div>
-                      <div class="d-flex flex-column">
-                        <h3 class="mt-2 mb-0">@HelloKitty97</h3>
-                        <div>
-                          <p class="text-left"><span class="text-muted">5.0</span>
-                            <span class="fa fa-star star-active ml-3"></span>
-                            <span class="fa fa-star star-active"></span>
-                            <span class="fa fa-star star-active"></span>
-                            <span class="fa fa-star star-active"></span>
-                            <span class="fa fa-star star-active"></span>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="ml-auto">
-                        <p class="text-muted pt-5 pt-sm-3">10 Sept</p>
-                      </div>
-                    </div>
-                    <div class="row text-left">
-                      <h4 class="blue-text mt-3">"Não tem jeito."</h4>
-                      <p class="content">Simplesmente o melhor jogo do gênero.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    <!-- Blog preview section-->
-    <section class="py-5">
-      <div class="container px-5 my-5">
-        <div class="row gx-5 justify-content-center">
-          <div class="col-lg-8 col-xl-6">
-            <div class="text-center">
-              <h2 class="fw-bolder">Jogos semelhantes</h2>
-
-            </div>
-          </div>
-        </div>
-        <div class="row gx-5">
-          <div class="col-lg-4 mb-5">
-            <div class="card h-100 shadow border-0">
-              <img class="card-img-top" src="https://cdn.akamai.steamstatic.com/steam/apps/914800/capsule_616x353.jpg?t=1667190151" alt="CoffeeTalk" />
-              <div class="card-body p-4">
-                <div class="badge bg-primary bg-gradient rounded-pill mb-2">RPG</div>
-                <div class="badge bg-primary bg-gradient rounded-pill mb-2">Simulação</div>
-                <a class="text-decoration-none link-dark stretched-link" href="#!">
-                  <h5 class="card-title mb-3">CoffeeTalk</h5>
-                </a>
-                <div>
-                  <p class="text-left"><span class="text-muted">5.0</span>
-                    <span class="fa fa-star star-active ml-3"></span>
-                    <span class="fa fa-star star-active"></span>
-                    <span class="fa fa-star star-active"></span>
-                    <span class="fa fa-star star-active"></span>
-                    <span class="fa fa-star star-active"></span>
-                  </p>
-                </div>
-              </div>
-              <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                <div class="d-flex align-items-end justify-content-between">
-                  <div class="d-flex align-items-center">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-5">
-            <div class="card h-100 shadow border-0">
-              <img class="card-img-top" src="https://geekninja.com.br/wp-content/uploads/2019/03/neko-ybwf_gm65.jpg" alt="Neko Atsume" />
-              <div class="card-body p-4">
-                <div class="badge bg-primary bg-gradient rounded-pill mb-2">Simulação</div>
-                <a class="text-decoration-none link-dark stretched-link" href="#!">
-                  <h5 class="card-title mb-3">Neko Atsume</h5>
-                </a>
-                <div>
-                  <p class="text-left"><span class="text-muted">5.0</span>
-                    <span class="fa fa-star star-active ml-3"></span>
-                    <span class="fa fa-star star-active"></span>
-                    <span class="fa fa-star star-active"></span>
-                    <span class="fa fa-star star-active"></span>
-                    <span class="fa fa-star star-active"></span>
-                  </p>
-                </div>
-              </div>
-              <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                <div class="d-flex align-items-end justify-content-between">
-                  <div class="d-flex align-items-center">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-5">
-            <div class="card h-100 shadow border-0">
-              <img class="card-img-top" src="https://animalcrossingworld.com/wp-content/uploads/2020/01/animal-crossing-new-horizons-key-artwork-january-2020-large-logo.png" alt="Animal Crossing: New Horizons" />
-              <div class="card-body p-4">
-                <div class="badge bg-primary bg-gradient rounded-pill mb-2">RPG</div>
-                <div class="badge bg-primary bg-gradient rounded-pill mb-2">Simulação</div>
-                <a class="text-decoration-none link-dark stretched-link" href="#!">
-                  <h5 class="card-title mb-3">Animal Crossing: New Horizons</h5>
-                  <div>
-                    <p class="text-left"><span class="text-muted">5.0</span>
-                      <span class="fa fa-star star-active ml-3"></span>
-                      <span class="fa fa-star star-active"></span>
-                      <span class="fa fa-star star-active"></span>
-                      <span class="fa fa-star star-active"></span>
-                      <span class="fa fa-star star-active"></span>
-                    </p>
-                  </div>
-                  <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                    <div class="d-flex align-items-end justify-content-between">
-                      <div class="d-flex align-items-center">
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-    </section>
-  </main>
-  <!-- Footer-->
-  <footer class="bg-dark py-4 mt-auto">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
     <div class="container px-5">
-      <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-        <div class="col-auto">
-          <div class="text-center">
-            <div class="small m-0 text-white">Plague.me 2023. Todos os Direitos Reservados.</div>
-            <a href="#!">Privacidade</a>
-            <span class="mx-1">&middot;</span>
-            <a href="#!">Termos</a>
-            <span class="mx-1">&middot;</span>
-            <a href="#!">FAQ</a>
+      <p><img src="https://github.com/ES2-UFPI/Plague.me/blob/main/imgw/logo.png?raw=true" alt="Logo" width="100" height="100" longdesc="desc.txt" /></p>
+      <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+        <span class="d-flex align-items-center">
+          <span class="small"><a href="#">Games</a></span>
+        </span>
+        </span>
+      </button>
+      <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+        <span class="d-flex align-items-center">
+          <span class="small"><a href="#">Community</a></span>
+        </span>
+        </span>
+      </button>
+
+      <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+
+        <li class="nav-item"><a class="nav-link me-lg-3" href="#">Entre</a></li>
+      </ul>
+      <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+        <span class="d-flex align-items-center">
+          <span class="small"><a href="#">Cadastre-se</a></span>
+        </span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Container -->
+  <!-- Descrição do jogo -->
+  <section class="bg-dark">
+    <section class="bg-dark">
+      <header class="masthead">
+        <div class="container px-5">
+          <div class="row gx-5 align-items-center">
+            <div class="col-lg-6">
+              <figure id="container">
+                <img src="https://pbs.twimg.com/profile_images/1283616874807226369/CMZRR9Ll_400x400.jpg" alt="Stardew Valley" width="400" height="400" />
+                <h1 class="display-1 lh-1 mb-3">Stardew Valley</h1>
+                <p class="lead fw-normal text-muted mb-5">Stardew Valley é um jogo de videogame, dos gêneros RPG e simulação, desenvolvido por Eric Barone e publicado pela ConcernedApe e pela Chucklefish. O jogo foi lançado para Microsoft Windows em 26 de fevereiro de 2016. Versões para Mac OS X e Linux foram lançadas em 29 de julho de 2016.</p>
+                <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                  <span class="d-flex align-items-center">
+                    Ver promoções +
+                  </span></button>
+                <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                  <span class="d-flex align-items-center">
+                    Avaliar jogo
+                  </span></button>
+              </figure>
+            </div>
+            <div class="col-lg-6">
+
+              <span class="lead fw-normal text-muted mb-5">Publisher:</span> <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <span class="d-flex align-items-center">
+                  ConcernedApe
+                </span></button> <br><br>
+              <span class="lead fw-normal text-muted mb-5">Desenvolvedor:</span> <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <span class="d-flex align-items-center">
+                  ConcernedApe
+                </span></button> <br><br>
+              <span class="lead fw-normal text-muted mb-5">Gêneros:</span> <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <span class="d-flex align-items-center">
+                  RPG
+                </span>
+              </button>
+              <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <span class="d-flex align-items-center">
+                  Simuladores
+                </span>
+              </button>
+              <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <span class="d-flex align-items-center">
+                  Indie
+                </span>
+              </button> <br><br>
+              <span class="lead fw-normal text-muted mb-5">Plataformas: PC, Mac, PS4, Mobile, Xbox One, Switch</span> <br><br>
+              <span class="lead fw-normal text-muted mb-5">Indicações: BAFTA Video Games, The Game Award</span> <br><br>
+              <span class="lead fw-normal text-muted mb-5">Adicionar a:</span>
+              <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <span class="d-flex align-items-center">
+                  Desejados
+                </span>
+              </button>
+              <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <span class="d-flex align-items-center">
+                  Jogados
+                </span>
+              </button>
+              <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <span class="d-flex align-items-center">
+                  Jogando
+                </span>
+              </button>
+              <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <span class="d-flex align-items-center">
+                  Criar Lista +
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+    </section>
+    <!-- Galeria de fotos do jogo -->
+    <section class="bg-dark">
+
+      <div class="container px-5">
+        <h2 class="col-xl-8">Galeria de fotos (5)</h2><br><br>
+        <div class="row gx-5 justify-content-center">
+          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active" style="background-image: url('https://i0.wp.com/nerdizmo.uai.com.br/wp-content/uploads/sites/29/2021/05/stardew-valley-e-tao-relaxante.jpg?fit=930%2C571&ssl=1&resize=1280%2C720')">
+              </div>
+              <div class="carousel-item" style="background-image: url('https://i.pinimg.com/originals/c1/84/04/c1840447f0130c90533b96c6d84d2354.jpg')">
+
+              </div>
+              <div class="carousel-item" style="background-image: url('https://storage.googleapis.com/planner-renders/30-quick-cockles-talked-easily-spring.png')">
+
+              </div>
+              <div class="carousel-item" style="background-image: url('https://oyster.ignimgs.com/mediawiki/apis.ign.com/stardew-valley/f/f7/Special_Orders.png?width=1280')">
+
+              </div>
+              <div class="carousel-item" style="background-image: url('https://cdn.holdtoreset.com/wp-content/uploads/2020/12/21174336/How-to-Start-The-Pirates-Wife-Quest.jpg')">
+
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Próximo</span>
+            </button>
           </div>
         </div>
       </div>
-    </div>
-  </footer>
-  <!-- Bootstrap core JS-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Core theme JS-->
-  <script src="js/scripts.js"></script>
-</body>
+      </div>
+    </section>
 
-</html>
+    <!-- Avaliações do jogo -->
+    <section class="bg-dark">
+      <div class="container px-5">
+        <h2 class="col-xl-8">Ver avaliações</h2>
+        <!-- Implementar sistema de avaliações -->
+      </div>
+    </section>
+
+    <!-- Jogos semelhantes -->
+    <section class="bg-dark">
+      <div class="container px-5">
+        <h2 class="col-xl-8">Jogos semelhantes</h2>
+        <div class="row">
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="https://github.com/ES2-UFPI/Plague.me/tree/Ana%2328/imgw/Modelo/1.png" alt="CoffeeTalk"></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">CoffeeTalk</a>
+                </h4>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="https://github.com/ES2-UFPI/Plague.me/tree/Ana%2328/imgw/Modelo/2.png" alt="Neko Atsume"></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Neko Atsume</a>
+                </h4>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="https://github.com/ES2-UFPI/Plague.me/tree/Ana%2328/imgw/Modelo/3.png" alt="ACNH"></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Animal Crossing: New Horizons</a>
+                </h4>
+
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Footer-->
+    <footer class="bg-black text-center py-5">
+      <div class="container px-5">
+        <div class="text-white-50 small">
+          <div class="mb-2">&copy; Plague.me 2023. Todos os Direitos Reservados.</div>
+          <a href="#!">Privacidade</a>
+          <span class="mx-1">&middot;</span>
+          <a href="#!">Termos</a>
+          <span class="mx-1">&middot;</span>
+          <a href="#!">FAQ</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    Core theme JS
+    <script src="js/scripts.js"></script>
+
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
 <!-- partial -->
   <script  src="./script.js"></script>
 

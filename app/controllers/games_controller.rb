@@ -1,8 +1,6 @@
-require 'byebug'
-
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[favorite]
+  before_action :authenticate_user!, only: %i[favorite wishlist]
 
   # GET /games or /games.json
   def index
@@ -79,8 +77,7 @@ class GamesController < ApplicationController
 
   def favorite
     @game = Game.find(params[:id])
-    if current_user.favorite_games.include?(@game)
-      current_user.favorite_games.delete(@game)
+    if current_user.favorite_games.delete(@game)
       flash[:notice] = "Game removed from favorites."
     else
       current_user.favorite_games << @game
@@ -89,17 +86,31 @@ class GamesController < ApplicationController
     redirect_to @game
   end
 
+  def wishlist
+    @game = Game.find(params[:id])
+    if current_user.wishlist_games.include?(@game)
+      current_user.wishlist_games.delete(@game)
+      flash[:notice] = "Game removed from wishlist."
+    else
+      current_user.wishlist_games << @game
+      flash[:notice] = "Game added to wishlist."
+    end
+    redirect_to @game
+  end
+
   def add_to_collection
     @game = Game.find(params[:id])
-    @collection = Collection.find_by(user_id: current_user.id)
-    if @collection.games.include?(@game)
-      @collection.games.delete(@game)
+    @collection = current_user.collections.find(params[:collection_item][:collection_id])
+    if @collection.collection_items.exists?(game_id: @game.id)
+      redirect_to @game, alert: 'Este jogo já está na coleção.'
     else
-      @collection.games << @game
-      @collection.save!
-      byebug
+      @collection_item = CollectionItem.new(collection: @collection, game: @game)
+      if @collection_item.save
+        redirect_to @game, notice: 'Jogo adicionado à coleção.'
+      else
+        redirect_to @game, alert: 'Falha ao adicionar jogo à coleção.'
+      end
     end
-    redirect_back(fallback_location: root_path)
   end
 
   private
@@ -110,7 +121,7 @@ class GamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:name_game, :description_game, :release, :rate_game, :franchise, :publisher_id, :developer_id, genre_ids: [], platform_ids: [])
+      params.require(:game).permit(:name_game, :description_game, :release, :rate_game, :franchise, :publisher_id, :developer_id, :icon, genre_ids: [], platform_ids: [])
     end
 
 end

@@ -27,6 +27,9 @@ namespace :dev do
 
         %x(rails dev:add_games) 
         puts("Jogos cadastrados!") 
+
+        %x(rails dev:add_default_user) 
+        puts("Usuários padrão cadastrados!")
          
       else
         puts "Not on development env"
@@ -143,7 +146,7 @@ namespace :dev do
       games = [
 
         { name_game: "Monster Hunter: World",
-          description_game: "Desenvolvedora e publicadora japonesa de jogos eletrônicos sediada em Osaka.",
+          description_game: "Monster Hunter: World",
           rate_game: 10,
           franchise: "Monster Hunter",
           genre_ids: [Genre.find_by(name_genre: 'Ação').id, Genre.find_by(name_genre: 'Aventura').id],
@@ -152,7 +155,7 @@ namespace :dev do
           developer: Developer.find_by(name_developer: 'CAPCOM') },
           
         { name_game: "Valheim",
-          description_game: "Desenvolvedora e publicadora de jogos independentes da Suécia",
+          description_game: "Valheim",
           rate_game: 10,
           franchise: "Valheim",
           genre_ids: [Genre.find_by(name_genre: 'Aventura').id, Genre.find_by(name_genre: 'Ação').id],
@@ -161,7 +164,7 @@ namespace :dev do
           developer: Developer.find_by(name_developer: 'Iron Gate') },
           
         { name_game: "The Elder Scrolls V: Skyrim Special Edition",
-          description_game: "É um braço de publicação da Bethesda norte-americano de jogos eletrônicos sediada em Rockville, Maryland",
+          description_game: "The Elder Scrolls V: Skyrim Special Edition",
           rate_game: 10,
           franchise: "The Elder Scrolls",
           genre_ids: [Genre.find_by(name_genre: 'RPG').id, Genre.find_by(name_genre: 'Aventura').id],
@@ -170,7 +173,7 @@ namespace :dev do
           developer: Developer.find_by(name_developer: 'Bethesda Game Studios') },
 
         { name_game: "Forza Horizon 5",
-          description_game: "Divisão multinacional da Microsoft responsável por produzir e distribuir jogos eletrônicos.",
+          description_game: "Forza Horizon 5",
           rate_game: 10,
           franchise: "Forza",
           genre_ids: [Genre.find_by(name_genre: 'Simulação').id, Genre.find_by(name_genre: 'Aventura').id],
@@ -179,7 +182,7 @@ namespace :dev do
           developer: Developer.find_by(name_developer: 'Playground Games') },
 
         { name_game: "Yu-Gi-Oh! Master Duel",
-          description_game: "Empresa pública japonesa desenvolvedora e distribuidora de jogos eletrônicos.",
+          description_game: "Yu-Gi-Oh! Master Duel",
           rate_game: 10,
           franchise: "Yu-Gi-Oh!",
           genre_ids: [Genre.find_by(name_genre: 'Estratégia').id],
@@ -194,6 +197,27 @@ namespace :dev do
               g.platform_ids = game[:platform_ids]
             end
         end
+    end
+
+    desc "Cadastra usuários"
+    task add_default_user: :environment do  
+
+        User.create!(
+          email: 'user@user.com',
+          password: 123456,
+          password_confirmation: 123456,
+          nickname: 'defuser',
+          admin: false
+        )
+
+        User.create!(
+          email: 'test@test.com',
+          password: 123456,
+          password_confirmation: 123456,
+          nickname: 'usertest',
+          admin: false
+        )
+        
     end
 
 end
