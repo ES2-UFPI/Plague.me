@@ -1,7 +1,8 @@
 class Game < ApplicationRecord
     validates :name_game, :description_game, presence: true
     validates :rate_game, numericality: { greater_than_or_equal_to: 0.0, less_than_or_equal_to: 10.0 }
-
+    has_one_attached :icon
+    
     belongs_to :publisher
     has_and_belongs_to_many :genres, join_table: :game_genres
     accepts_nested_attributes_for :genres
@@ -15,6 +16,10 @@ class Game < ApplicationRecord
     has_many :favorited_by, through: :favorites, source: :user
     has_many :collection_items, dependent: :destroy
     has_many :collections, through: :collection_items
+    has_many :wishlists, dependent: :destroy
+    has_many :wishlisted_by, through: :wishlists, source: :user
+    has_many :user_games, dependent: :destroy
+    has_many :users, through: :user_games
 
     def calculate_average_rating
         reviews.average(:score).to_f.round(1)

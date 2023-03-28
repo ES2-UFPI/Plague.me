@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   get 'filtered_search/games', to: 'games#filtered_search', as: 'filtered_search_games'
+  get 'users/:user_id/library', to: 'user_games#index', as: :user_library
+  get 'user_games/:user_id/edit', to: 'user_games#edit'
   resources :promotions
   resources :games
   root 'pages#home'
@@ -24,12 +26,24 @@ Rails.application.routes.draw do
   resources :collections do
     delete 'games/:id', to: 'collections#remove_game', as: :remove_game
   end 
+  resources :user_games, only: [:create, :edit, :update]
   resources :games do
+    resources :user_games, only: [:create, :edit, :update]
     member do
+      post 'wishlist'
       post 'favorite'
       post :add_to_collection
     end
       post 'create_review', on: :member
+  end
+  get 'admin', to: 'admin#index'
+  namespace :admin do
+    resources :users
+  end
+  authenticate :user, ->(user) { user.is_admin? } do
+    namespace :admin do
+      root to: "users#index"
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

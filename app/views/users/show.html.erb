@@ -8,6 +8,15 @@
   <% end %>
 </ul>
 
+<h3><%= link_to "Biblioteca", user_library_path(@user), class: 'btn btn-primary' %></h3>
+
+<h3>Wishlist</h3>
+<ul>
+  <% @user.wishlist_games.each do |game| %>
+    <li><%= link_to game.name_game, game %></li>
+  <% end %>
+</ul>
+
 <h3>Coleções </h3> 
   <% if user_signed_in? && current_user == @user %>
     <% if @user.collections.any? %>

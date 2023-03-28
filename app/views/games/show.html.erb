@@ -33,7 +33,20 @@
   <% else %>
     <%= button_to 'Adicionar aos favoritos', favorite_game_path(@game), method: :post, class: 'btn btn-outline-success' %>
   <% end %>
+
+<%= form_for current_user.user_games.build(game_id: @game.id), url: game_user_games_path(@game) do |f| %>
+  <div class="form-group">
+    <%= f.label :status %><br>
+    <%= f.select :status, UserGame.statuses.keys.to_a %>
+  </div>
+  <%= f.submit "Adicionar à Biblioteca", class: "btn btn-primary" %>
 <% end %>
+
+   <% if current_user.wishlist_games.include?(@game) %>
+    <%= button_to 'Remover da lista de desejos', wishlist_game_path(@game), method: :post, class: 'btn btn-outline-danger' %>
+  <% else %>
+    <%= button_to 'Adicionar à lista de desejos', wishlist_game_path(@game), method: :post, class: 'btn btn-outline-success' %>
+  <% end %>
 
   <br>
 
@@ -41,9 +54,6 @@
     <%= collection_select :collection_item, :collection_id, current_user.collections, :id, :title, { prompt: 'Selecione uma coleção' } %>
     <%= submit_tag 'Adicionar à coleção' %>
   <% end %>
+<% end %>
 
-  <%= link_to "Edit this game", edit_game_path(@game) %> |
-  <%= link_to "Back to games", games_path %>
-
-  <%= button_to "Destroy this game", @game, method: :delete %>
 </div>

@@ -1,2 +1,15 @@
 <h1>Pagina inicial</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+
+<% if current_user %>
+  <h2>Recomendados</h2>
+  <% if @recommended_games.any? %>
+    <ul>
+      <% @recommended_games.each do |game| %>
+        <li><%= link_to game.name_game, game %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Não há recomendações no momento.</p>
+  <% end %>
+<% end %>

@@ -7,8 +7,13 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :favorites, dependent: :destroy
   has_many :favorite_games, through: :favorites, source: :game
+  has_many :wishlists, dependent: :destroy
+  has_many :wishlist_games, through: :wishlists, source: :game
+  has_many :user_games, dependent: :destroy
+  has_many :games, through: :user_games
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  enum role: [:user, :admin]
 
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
@@ -20,6 +25,17 @@ class User < ApplicationRecord
 
   def friendship_with(other_user)
     Friendship.find_by(user: self, friend: other_user) || Friendship.find_by(user: other_user, friend: self)
+  end
+  
+  def recommended_games
+    friend_ids = friendships.pluck(:friend_id)
+    friend_favorite_game_ids = Favorite.where(user_id: friend_ids).pluck(:game_id)
+    excluded_game_ids = game_ids + favorite_games.pluck(:id)
+    Game.where(id: friend_favorite_game_ids).where.not(id: excluded_game_ids + user_games.pluck(:game_id))
+  end
+
+  def is_admin?
+    self.admin
   end
 
 end
