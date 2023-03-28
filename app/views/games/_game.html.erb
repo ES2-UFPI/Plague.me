@@ -1,0 +1,50 @@
+<div id="<%= dom_id game %>">
+  <p>
+    <strong>Name game:</strong>
+    <%= game.name_game %>
+  </p>
+
+  <p>
+    <strong>Description game:</strong>
+    <%= game.description_game %>
+  </p>
+
+  <p>
+    <strong>Release:</strong>
+    <%= game.release %>
+  </p>
+
+  <p>
+    <strong>Rate game:</strong>
+    <%= game.rate_game %>
+  </p>
+
+  <p>
+    <strong>Franchise:</strong>
+    <%= game.franchise %>
+  </p>
+
+  <p>
+    <strong>Publisher:</strong>
+    <%= game.publisher.name_publisher %>
+  </p>
+
+  <p>
+    <strong>Developer:</strong>
+    <%= game.developer.name_developer %>
+  </p>
+
+  <p>
+    <strong>Genres:</strong>
+    <% game.genres.each do |genre| %>
+      <%= link_to genre.name_genre, filtered_search_games_path(genre_id: genre.id) %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Platforms:</strong>
+    <% game.platforms.each do |platform| %>
+      <%= platform.name_platform %>
+    <% end %>
+  
+</div>

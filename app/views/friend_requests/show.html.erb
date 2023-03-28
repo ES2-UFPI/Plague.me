@@ -1,0 +1,9 @@
+<h1>Solicitações de amizade</h1>
+
+<% current_user.received_friend_requests.each do |friend_request| %>
+  <div>
+    <%= link_to friend_request.requester.nickname, user_path(friend_request.requester) %> quer ser seu amigo.
+    <%= button_to "Aceitar", accept_user_friend_request_path(current_user, friend_request), method: :put %> 
+    <%= button_to "Recusar", user_friend_request_path(current_user, friend_request), method: :delete %>
+  </div>
+<% end %>
