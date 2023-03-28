@@ -88,8 +88,7 @@ class GamesController < ApplicationController
 
   def wishlist
     @game = Game.find(params[:id])
-    if current_user.wishlist_games.include?(@game)
-      current_user.wishlist_games.delete(@game)
+    if current_user.wishlist_games.destroy(@game)
       flash[:notice] = "Game removed from wishlist."
     else
       current_user.wishlist_games << @game
