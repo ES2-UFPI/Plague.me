@@ -4,6 +4,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
+    <%= f.file_field :icon %>
     <%= f.input :name_game %>
     <%= f.input :description_game %>
     <%= f.input :release %>
