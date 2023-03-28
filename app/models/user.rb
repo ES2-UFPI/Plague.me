@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  validates :nickname, :description, presence: true
   has_many :user_promotions
   has_many :collections, dependent: :destroy
   has_many :promotions, through: :user_promotions
