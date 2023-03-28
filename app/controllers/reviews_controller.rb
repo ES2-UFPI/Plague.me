@@ -3,15 +3,15 @@ class ReviewsController < ApplicationController
 
   def create
     @game = Game.find(params[:game_id])
-    @review = @game.reviews.new(review_params)
+    @review = @game.reviews.build(review_params)
     @review.user = current_user
-    @review.posted_at = Time.now 
+    @review.posted_at = Time.current
     
     if @review.save
-      @game.update_attribute(:rate_game, @game.calculate_average_rating)
+      @game.update(rate_game: @game.calculate_average_rating)
       redirect_to game_path(@game), notice: "Review enviada com sucesso!"
     else
-       redirect_to game_path(@game), alert: "Não foi possível enviar a review."
+      redirect_to game_path(@game), alert: "Não foi possível enviar a review."
     end
   end
 
