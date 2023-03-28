@@ -33,10 +33,23 @@ class CollectionsController < ApplicationController
             render :edit
           end
         end
-      
+
         def destroy
-          @collection.destroy
-          redirect_to collections_url, notice: 'Collection was successfully destroyed.'
+          @collection = Collection.find(params[:id])
+          
+          if @collection.user_id == current_user.id
+            @collection.destroy
+            redirect_to user_path(current_user), notice: "Coleção excluída com sucesso!"
+          else
+            redirect_to user_path(@current_user), alert: "Você não tem permissão para excluir esta coleção."
+          end
+        end
+
+        def remove_game
+          @collection = Collection.find(params[:collection_id])
+          @game = Game.find(params[:id])
+          @collection.games.delete(@game)
+          redirect_to @collection, notice: 'Jogo removido da coleção com sucesso!'
         end
       
         private

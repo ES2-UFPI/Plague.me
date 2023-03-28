@@ -71,7 +71,7 @@
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 500;
   --bs-body-line-height: 1.5;
-  --bs-body-color: #17162e;
+  --bs-body-color: #ffffff;
   --bs-body-bg: #17162e;
 }
 
@@ -271,7 +271,7 @@ sup {
 }
 
 a {
-  color: #000;
+  color: #fffafa;
   text-decoration: underline;
 }
 a:hover {
@@ -3099,7 +3099,7 @@ textarea.form-control.is-invalid {
   display: inline-block;
   font-weight: 500;
   line-height: 1.5;
-  color: #212529;
+  color: #0aff16;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
