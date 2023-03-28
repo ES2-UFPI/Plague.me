@@ -36,6 +36,15 @@ Rails.application.routes.draw do
     end
       post 'create_review', on: :member
   end
+  get 'admin', to: 'admin#index'
+  namespace :admin do
+    resources :users
+  end
+  authenticate :user, ->(user) { user.is_admin? } do
+    namespace :admin do
+      root to: "users#index"
+    end
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

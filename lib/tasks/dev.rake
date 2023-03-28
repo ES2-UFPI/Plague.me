@@ -206,14 +206,16 @@ namespace :dev do
           email: 'user@user.com',
           password: 123456,
           password_confirmation: 123456,
-          nickname: 'defuser'
+          nickname: 'defuser',
+          admin: false
         )
 
         User.create!(
           email: 'test@test.com',
           password: 123456,
           password_confirmation: 123456,
-          nickname: 'usertest'
+          nickname: 'usertest',
+          admin: false
         )
         
     end

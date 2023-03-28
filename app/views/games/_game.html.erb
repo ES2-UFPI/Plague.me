@@ -16,7 +16,11 @@
 
   <p>
     <strong>Rate game:</strong>
-    <%= game.rate_game %>
+    <% if game.reviews.any?%>
+      <%= game.rate_game %>
+    <% else %>
+      <p>Seja o primeiro a avaliar esse jogo!</p>
+    <% end %>
   </p>
 
   <p>
@@ -26,12 +30,12 @@
 
   <p>
     <strong>Publisher:</strong>
-    <%= game.publisher.name_publisher %>
+    <%= link_to game.publisher.name_publisher, publisher_path(game.publisher.id) %>
   </p>
 
   <p>
     <strong>Developer:</strong>
-    <%= game.developer.name_developer %>
+    <%= link_to game.developer.name_developer, developer_path(game.developer.id) %>
   </p>
 
   <p>
@@ -44,7 +48,7 @@
   <p>
     <strong>Platforms:</strong>
     <% game.platforms.each do |platform| %>
-      <%= platform.name_platform %>
+      <%= link_to platform.name_platform, platform_path(platform.id) %>
     <% end %>
   
 </div>

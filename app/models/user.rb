@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :games, through: :user_games
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  enum role: [:user, :admin]
 
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
@@ -31,6 +32,10 @@ class User < ApplicationRecord
     friend_favorite_game_ids = Favorite.where(user_id: friend_ids).pluck(:game_id)
     excluded_game_ids = game_ids + favorite_games.pluck(:id)
     Game.where(id: friend_favorite_game_ids).where.not(id: excluded_game_ids + user_games.pluck(:game_id))
+  end
+
+  def is_admin?
+    self.admin
   end
 
 end
